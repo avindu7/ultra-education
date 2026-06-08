@@ -684,10 +684,10 @@
                     <div class="upload-row">
                         <input type="file" id="upload-docs-file">
                         <div class="upload-tag-group" id="upload-docs-tags">
-                            <button class="upload-tag-btn selected" onclick="selectUploadTag('docs', 'Syllabus', this)">ICT</button>
-                            <button class="upload-tag-btn" onclick="selectUploadTag('docs', 'Assignment', this)">Accounting</button>
-                            <button class="upload-tag-btn" onclick="selectUploadTag('docs', 'Notes', this)">Business Studies</button>
-                            <button class="upload-tag-btn" onclick="selectUploadTag('docs', 'Other', this)">Econ</button>
+                            <button class="upload-tag-btn selected" onclick="selectUploadTag('docs', 'ICT', this)">ICT</button>
+                            <button class="upload-tag-btn" onclick="selectUploadTag('docs', 'Accounting', this)">Accounting</button>
+                            <button class="upload-tag-btn" onclick="selectUploadTag('docs', 'Business Studies', this)">Business Studies</button>
+                            <button class="upload-tag-btn" onclick="selectUploadTag('docs', 'Econ', this)">Econ</button>
                         </div>
                         <button class="glass-btn glass-btn-admin" onclick="handleFileUpload('docs')">Upload File</button>
                     </div>
@@ -695,10 +695,10 @@
 
                 <div class="category-filter-bar">
                     <button class="category-btn active-cat" onclick="filterCategory('docs', 'All', this)">All Files</button>
-                    <button class="category-btn" onclick="filterCategory('docs', 'Syllabus', this)">ICT</button>
-                    <button class="category-btn" onclick="filterCategory('docs', 'Assignment', this)">Accounting</button>
-                    <button class="category-btn" onclick="filterCategory('docs', 'Notes', this)">Business Studies</button>
-                    <button class="category-btn" onclick="filterCategory('docs', 'Other', this)">Econ</button>
+                    <button class="category-btn" onclick="filterCategory('docs', 'ICT', this)">ICT</button>
+                    <button class="category-btn" onclick="filterCategory('docs', 'Accounting', this)">Accounting</button>
+                    <button class="category-btn" onclick="filterCategory('docs', 'Business Studies', this)">Business Studies</button>
+                    <button class="category-btn" onclick="filterCategory('docs', 'Econ', this)">Econ</button>
                 </div>
 
                 <div id="list-docs" class="file-list"></div>
@@ -713,10 +713,10 @@
                     <div class="upload-row">
                         <input type="file" id="upload-videos-file" accept="video/*">
                         <div class="upload-tag-group" id="upload-videos-tags">
-                            <button class="upload-tag-btn selected" onclick="selectUploadTag('videos', 'Lecture', this)">ICT</button>
-                            <button class="upload-tag-btn" onclick="selectUploadTag('videos', 'Tutorial', this)">Business Studies</button>
-                            <button class="upload-tag-btn" onclick="selectUploadTag('videos', 'Review', this)">Accounting</button>
-                            <button class="upload-tag-btn" onclick="selectUploadTag('videos', 'Other', this)">Econ</button>
+                            <button class="upload-tag-btn selected" onclick="selectUploadTag('videos', 'ICT', this)">ICT</button>
+                            <button class="upload-tag-btn" onclick="selectUploadTag('videos', 'Business Studies', this)">Business Studies</button>
+                            <button class="upload-tag-btn" onclick="selectUploadTag('videos', 'Accounting', this)">Accounting</button>
+                            <button class="upload-tag-btn" onclick="selectUploadTag('videos', 'Econ', this)">Econ</button>
                         </div>
                         <button class="glass-btn glass-btn-admin" onclick="handleFileUpload('videos')">Upload Video</button>
                     </div>
@@ -724,10 +724,10 @@
 
                 <div class="category-filter-bar">
                     <button class="category-btn active-cat" onclick="filterCategory('videos', 'All', this)">All Videos</button>
-                    <button class="category-btn" onclick="filterCategory('videos', 'Lecture', this)">ICT</button>
-                    <button class="category-btn" onclick="filterCategory('videos', 'Tutorial', this)">Accounting</button>
-                    <button class="category-btn" onclick="filterCategory('videos', 'Review', this)">Business Studies</button>
-                    <button class="category-btn" onclick="filterCategory('videos', 'Other', this)">Econ</button>
+                    <button class="category-btn" onclick="filterCategory('videos', 'ICT', this)">ICT</button>
+                    <button class="category-btn" onclick="filterCategory('videos', 'Accounting', this)">Accounting</button>
+                    <button class="category-btn" onclick="filterCategory('videos', 'Business Studies', this)">Business Studies</button>
+                    <button class="category-btn" onclick="filterCategory('videos', 'Econ', this)">Econ</button>
                 </div>
 
                 <div id="list-videos" class="file-list"></div>
@@ -735,7 +735,7 @@
 
             <section id="classes-sec" class="web-section">
                 <h2>🏫 Classes</h2>
-                <p>Review class agendas, syllabi, worksheets, and course materials.</p>
+                <p>Review class agendas, worksheets, and course materials.</p>
 
                 <div class="admin-upload-container admin-only hidden">
                     <h4>🔒 Admin Engine: Inject Class Data Elements</h4>
@@ -832,7 +832,7 @@
         let db = null;
         
         let activeFilters = { docs: 'All', videos: 'All', classes: 'All' };
-        let uploadSelectedTags = { docs: 'Syllabus', videos: 'Lecture', classes: 'Schedule' };
+        let uploadSelectedTags = { docs: 'ICT', videos: 'ICT', classes: 'Schedule' };
         let currentActiveObjectUrl = null;
 
         const authScreen = document.getElementById('auth-screen');
@@ -1082,7 +1082,7 @@
                 size: (file.size / 1024).toFixed(1) + " KB",
                 type: file.type || (category === 'videos' ? 'video/mp4' : 'application/octet-stream'),
                 data: file,
-                owner: currentUserEmail.toLowerCase().trim() // Track file owner assignment dynamically
+                owner: currentUserEmail.toLowerCase().trim()
             };
 
             const transaction = db.transaction(["files"], "readwrite");
@@ -1188,11 +1188,16 @@
                     const file = cursor.value;
                     const cat = file.category;
 
-                    // Evaluate data segmentation parameters: Users see personal nodes, Admins bypass filtration logic
-                    const isOwner = file.owner === currentUserEmail.toLowerCase().trim();
-                    const isAdmin = currentUserRole === "Administrator";
+                    // --- CRITICAL VISIBILITY LOGIC UPDATE ---
+                    // 1. Files uploaded by the Admin (avindu@admin.com) are visible to EVERYONE.
+                    // 2. Files uploaded by a standard user are visible ONLY to themselves or the Admin.
+                    const isUploadedByAdmin = file.owner === MASTER_ADMIN_EMAIL;
+                    const isOwnerOfFile = file.owner === currentUserEmail.toLowerCase().trim();
+                    const iAmAdmin = currentUserRole === "Administrator";
 
-                    if (categories.includes(cat) && (isOwner || isAdmin)) {
+                    const isVisibleToCurrentSession = isUploadedByAdmin || isOwnerOfFile || iAmAdmin;
+
+                    if (categories.includes(cat) && isVisibleToCurrentSession) {
                         const currentFilter = activeFilters[cat];
                         if (currentFilter === 'All' || file.tag === currentFilter) {
                             recordsFound[cat]++;
@@ -1208,7 +1213,7 @@
                                 <span class="file-icon">${icons[cat]}</span>
                                 <div>
                                     <div style="font-size:14px; font-weight:700;">${file.name} <span class="file-badge">${file.tag || 'General'}</span></div>
-                                    <div style="font-size:11px; color:var(--text-muted); font-weight:500;">Size: ${file.size}</div>
+                                    <div style="font-size:11px; color:var(--text-muted); font-weight:500;">Size: ${file.size} ${isUploadedByAdmin ? '⭐ (Official Admin Upload)' : ''}</div>
                                 </div>
                             `;
                             card.appendChild(fileInfo);
@@ -1264,7 +1269,6 @@
             let loggedInRole = null;
             let loggedInName = "User Account";
             
-            // Standardize login input variation early
             const normalizedInputEmail = emailInput.toLowerCase().trim();
 
             if (normalizedInputEmail === MASTER_ADMIN_EMAIL && passwordInput === MASTER_ADMIN_PASSWORD) {
