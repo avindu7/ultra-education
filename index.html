@@ -575,7 +575,6 @@
 </head>
 <body>
 
-    <!-- LIGHTBOX OVERLAY LAYER -->
     <div id="lightbox" class="lightbox-overlay hidden">
         <div class="lightbox-window">
             <button class="lightbox-close" onclick="closeLightbox()">✕</button>
@@ -584,10 +583,8 @@
         </div>
     </div>
 
-    <!-- 1. AUTHENTICATION MODULES -->
     <div id="auth-screen" class="auth-screen">
         
-        <!-- SIGN UP WINDOW -->
         <div id="signup-box" class="glass-card hidden">
             <h2 style="margin-top:0; font-weight:800;">Create Account</h2>
             <form id="signup-form">
@@ -605,12 +602,10 @@
                 </div>
                 <button type="submit" class="glass-btn glass-btn-primary" style="width:100%;">Register Account</button>
                 <div id="signup-msg" class="success">Account registered successfully!</div>
-                <div id="signup-error" class="error"></div>
             </form>
             <span class="toggle-link" onclick="switchAuthBox('login')">Already have an account? Log In</span>
         </div>
 
-        <!-- LOG IN WINDOW -->
         <div id="login-box" class="glass-card">
             <h2 style="margin-top:0; font-weight:800;">Log In</h2>
             <form id="login-form">
@@ -630,7 +625,6 @@
 
     </div>
 
-    <!-- 2. MAIN APP HUB LAYOUT -->
     <div id="main-app" class="app-container hidden">
         
         <aside class="sidebar">
@@ -653,7 +647,6 @@
 
         <main class="main-viewport">
 
-            <!-- SECTION 0: HOME LANDING DASHBOARD -->
             <section id="home-sec" class="web-section active-section">
                 <h2 style="margin-top:0; font-weight:800;">🏠 Welcome to Ultra Education</h2>
                 <p style="font-size: 15px; line-height: 1.6; max-width: 800px;">
@@ -664,7 +657,6 @@
 
                 <h3 style="margin-top: 35px; font-weight: 700;">📊 Platform Activity Metrics</h3>
                 
-                <!-- Active & All Registered Users Live Stats Bar -->
                 <div class="metrics-bar">
                     <div class="metric-card">
                         <span class="metric-icon">👥</span>
@@ -683,7 +675,6 @@
                 </div>
             </section>
 
-            <!-- SECTION 1: DOCUMENTS -->
             <section id="docs-sec" class="web-section">
                 <h2 style="margin-top:0; font-weight:800;">📄 Papers & Documents</h2>
                 <p>Click on any file entry below to view details or process downloads.</p>
@@ -702,7 +693,6 @@
                     </div>
                 </div>
 
-                <!-- Category Selector Bar -->
                 <div class="category-filter-bar">
                     <button class="category-btn active-cat" onclick="filterCategory('docs', 'All', this)">All Files</button>
                     <button class="category-btn" onclick="filterCategory('docs', 'Syllabus', this)">ICT</button>
@@ -714,7 +704,6 @@
                 <div id="list-docs" class="file-list"></div>
             </section>
 
-            <!-- SECTION 2: VIDEOS -->
             <section id="videos-sec" class="web-section">
                 <h2 style="margin-top:0; font-weight:800;">🎬 Video Lectures & Media</h2>
                 <p>Click on an uploaded clip sequence to view and stream high-capacity files.</p>
@@ -733,7 +722,6 @@
                     </div>
                 </div>
 
-                <!-- Category Selector Bar -->
                 <div class="category-filter-bar">
                     <button class="category-btn active-cat" onclick="filterCategory('videos', 'All', this)">All Videos</button>
                     <button class="category-btn" onclick="filterCategory('videos', 'Lecture', this)">ICT</button>
@@ -745,7 +733,6 @@
                 <div id="list-videos" class="file-list"></div>
             </section>
 
-            <!-- SECTION 3: CLASSES -->
             <section id="classes-sec" class="web-section">
                 <h2>🏫 Classes</h2>
                 <p>Review class agendas, syllabi, worksheets, and course materials.</p>
@@ -763,7 +750,6 @@
                     </div>
                 </div>
 
-                <!-- Category Selector Bar -->
                 <div class="category-filter-bar">
                     <button class="category-btn active-cat" onclick="filterCategory('classes', 'All', this)">All Data</button>
                     <button class="category-btn" onclick="filterCategory('classes', 'Schedule', this)">Schedules</button>
@@ -774,17 +760,14 @@
                 <div id="list-classes" class="file-list"></div>
             </section>
 
-            <!-- SECTION 4: ACCOUNT SETTINGS -->
             <section id="settings-sec" class="web-section">
                 <h2>Account Settings</h2>
                 <p style="color:var(--text-muted); margin-bottom: 25px;">Manage your profile identity, security parameters, and workspace styling variations.</p>
                 
                 <div class="settings-grid">
-                    <!-- Left Column: Avatar & Theme Engine -->
                     <div>
                         <h3>🎨 Ultra Parameters</h3>
                         
-                        <!-- System Theme Selector Form -->
                         <div class="theme-switch-container">
                             <span style="font-size: 14px; font-weight: 700;">System Theme Variant</span>
                             <div class="theme-options">
@@ -809,13 +792,20 @@
                         </div>
                     </div>
 
-                    <!-- Right Column: Modify Parameters Form -->
                     <div>
                         <h3>🔒 Security & Credentials Setup</h3>
                         <form id="update-settings-form" style="background: var(--glass-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);">
                             <div class="input-group">
                                 <label>Change Profile Name</label>
                                 <input type="text" id="settings-name" placeholder="Update profile name">
+                            </div>
+                            <div class="input-group">
+                                <label>Modify Email Address</label>
+                                <input type="email" id="settings-email" placeholder="Update sign-in email">
+                            </div>
+                            <div class="input-group">
+                                <label>Change Password Key</label>
+                                <input type="password" id="settings-password" placeholder="Type new password string">
                             </div>
                             <button type="submit" class="glass-btn glass-btn-primary" style="width: 100%; margin-top: 5px;">Save Changes</button>
                             <div id="settings-success-msg" class="success" style="text-align: center; margin-top: 12px;">Profile variations saved successfully!</div>
@@ -824,7 +814,6 @@
                 </div>
             </section>
 
-            <!-- EXTRA SECTION 5: ADMIN MASTER VIEW -->
             <section id="admin-sec" class="web-section">
                 <h2 style="color: #7c3aed; margin-top:0; font-weight:800;">🔑 Root Administrator Panel</h2>
                 <p>Welcome back, Master Root System User. Global platform storage nodes are active.</p>
@@ -833,33 +822,14 @@
         </main>
     </div>
 
-    <!-- 3. RUNTIME LOGIC SCRIPTS (UPGRADED TO FIREBASE ECOSYSTEM) -->
-    <script type="module">
-        // Import the modern Firebase SDK modules directly via CDN 
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-        // --- REPLACE THE KEYS BELOW WITH YOUR REAL FIREBASE PROJECT CONFIGURATION ---
-        const firebaseConfig = {
-            apiKey: "YOUR_FIREBASE_API_KEY",
-            authDomain: "YOUR_FIREBASE_AUTH_DOMAIN",
-            projectId: "YOUR_FIREBASE_PROJECT_ID",
-            storageBucket: "YOUR_FIREBASE_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_FIREBASE_MESSAGING_SENDER_ID",
-            appId: "YOUR_FIREBASE_APP_ID"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const firestore = getFirestore(app);
-
+    <script>
         const MASTER_ADMIN_EMAIL = "avindu@admin.com";
+        const MASTER_ADMIN_PASSWORD = "1234vinu";
         const DEFAULT_AVATAR = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2364748b'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5-4-8-4z'/></svg>";
 
         let currentUserRole = "Standard User";
-        let db = null; // IndexedDB placeholder retained for offline local file tracking compatibility
+        let currentUserEmail = "";
+        let db = null;
         
         let activeFilters = { docs: 'All', videos: 'All', classes: 'All' };
         let uploadSelectedTags = { docs: 'Syllabus', videos: 'Lecture', classes: 'Schedule' };
@@ -882,246 +852,219 @@
         const lightboxTitle = document.getElementById('lightbox-title');
         const lightboxContent = document.getElementById('lightbox-content');
 
-        // Globalized theme configuration engine
-        window.setSystemTheme = function(themeVariant) {
+        // THEME ENGINE RUNTIME MANAGEMENT
+        function setSystemTheme(themeVariant) {
             const root = document.documentElement;
             const lightBtn = document.getElementById('theme-btn-light');
             const darkBtn = document.getElementById('theme-btn-dark');
 
             if (themeVariant === 'dark') {
                 root.classList.add('dark-theme');
-                if (lightBtn) lightBtn.classList.remove('active-theme');
-                if (darkBtn) darkBtn.classList.add('active-theme');
+                lightBtn.classList.remove('active-theme');
+                darkBtn.classList.add('active-theme');
                 localStorage.setItem('workspace_theme', 'dark');
             } else {
                 root.classList.remove('dark-theme');
-                if (darkBtn) darkBtn.classList.remove('active-theme');
-                if (lightBtn) lightBtn.classList.add('active-theme');
+                darkBtn.classList.remove('active-theme');
+                lightBtn.classList.add('active-theme');
                 localStorage.setItem('workspace_theme', 'light');
             }
         }
-        setSystemTheme(localStorage.getItem('workspace_theme') || 'light');
 
-        // Retained Local IndexedDB layout setup logic strictly for component document caching handling
+        // Apply saved theme early to avoid flashes during hydration
+        const cachedTheme = localStorage.getItem('workspace_theme') || 'light';
+        setSystemTheme(cachedTheme);
+
         function initStorageDB() {
             const request = indexedDB.open("PortalStorageEngine", 2);
+            
             request.onupgradeneeded = function(e) {
                 let database = e.target.result;
-                if (!database.objectStoreNames.contains("files")) database.createObjectStore("files", { keyPath: "id" });
-                if (!database.objectStoreNames.contains("avatars")) database.createObjectStore("avatars", { keyPath: "email" });
+                if (!database.objectStoreNames.contains("files")) {
+                    database.createObjectStore("files", { keyPath: "id" });
+                }
+                if (!database.objectStoreNames.contains("avatars")) {
+                    database.createObjectStore("avatars", { keyPath: "email" });
+                }
             };
+            
             request.onsuccess = function(e) {
                 db = e.target.result;
                 renderUploads();
+                checkActiveSession();
             };
         }
-        initStorageDB();
 
-        // --- GLOBAL AUTH STATE SYNCHRONIZER (CROSS-DEVICE COMPATIBLE) ---
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                // User is authenticated successfully
-                let name = user.displayName || "User Account";
-                let role = "Standard User";
-                
-                if (user.email.toLowerCase().trim() === MASTER_ADMIN_EMAIL) {
-                    role = "Administrator";
-                    name = "System Director";
-                } else {
-                    // Try to extract customized roles saved remotely on firestore if exists
-                    try {
-                        const userDoc = await getDoc(doc(firestore, "users", user.uid));
-                        if (userDoc.exists() && userDoc.data().role) {
-                            role = userDoc.data().role;
-                        }
-                    } catch (err) { console.log("Firestore metadata read skipped or offline."); }
-                }
-
-                currentUserRole = role;
-                authScreen.classList.add('hidden');
-                mainApp.classList.remove('hidden');
-                
-                displayName.innerText = name;
-                sidebarUserName.innerText = name;
-                displayEmail.innerText = user.email;
-                displayRole.innerText = role;
-                sidebarRoleBadge.innerText = role;
-
-                fetchAndRenderActiveAvatar(user.email);
-                const adminUploadBars = document.querySelectorAll('.admin-only');
-
-                if (role === 'Administrator') {
-                    adminNavItem.classList.remove('hidden');
-                    sidebarRoleBadge.className = "role-badge admin-role";
-                    adminUploadBars.forEach(bar => bar.classList.remove('hidden'));
-                } else {
-                    adminNavItem.classList.add('hidden');
-                    sidebarRoleBadge.className = "role-badge user-role";
-                    adminUploadBars.forEach(bar => bar.classList.add('hidden'));
-                }
-                
-                renderUploads();
-                refreshLiveMetrics();
-            } else {
-                // User is logged out
-                mainApp.classList.add('hidden');
-                authScreen.classList.remove('hidden');
-                refreshLiveMetrics();
-            }
+        window.addEventListener('DOMContentLoaded', () => {
+            initStorageDB();
         });
 
-        async function refreshLiveMetrics() {
-            try {
-                // Fetch direct statistics across real global device registrations securely
-                const querySnapshot = await getDocs(collection(firestore, "users"));
-                let totalCount = querySnapshot.size + 1; // Standard users + Master Admin account
-                document.getElementById('metric-all-users').innerText = totalCount;
-            } catch (e) {
-                document.getElementById('metric-all-users').innerText = auth.currentUser ? "2" : "1";
+        function checkActiveSession() {
+            const sessionEmail = localStorage.getItem('active_session_email');
+            if (sessionEmail) {
+                let targetPassword = "";
+                const normalizedSessionEmail = sessionEmail.toLowerCase().trim();
+                if (normalizedSessionEmail === MASTER_ADMIN_EMAIL) {
+                    targetPassword = MASTER_ADMIN_PASSWORD;
+                } else {
+                    const cachedEmail = localStorage.getItem('stored_email');
+                    if (cachedEmail && normalizedSessionEmail === cachedEmail.toLowerCase().trim()) {
+                        targetPassword = localStorage.getItem('stored_password');
+                    }
+                }
+                
+                if (targetPassword !== "") {
+                    executeLoginRoutine(normalizedSessionEmail, targetPassword);
+                }
             }
-            document.getElementById('metric-active-users').innerText = auth.currentUser ? "1" : "0";
         }
 
-        // --- SIGN UP FORM PIPELINE ---
-        document.getElementById('signup-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const name = document.getElementById('signup-name').value.trim();
-            const email = document.getElementById('signup-email').value.trim();
-            const password = document.getElementById('signup-password').value;
-            const errorDiv = document.getElementById('signup-error');
-            const successDiv = document.getElementById('signup-msg');
-
-            errorDiv.style.display = 'none';
-            successDiv.style.display = 'none';
-
-            if (email.toLowerCase() === MASTER_ADMIN_EMAIL) {
-                errorDiv.innerText = "This master admin email is already registered internally.";
-                errorDiv.style.display = 'block';
-                return;
+        function refreshLiveMetrics() {
+            let totalUsers = 1; 
+            const customEmail = localStorage.getItem('stored_email');
+            if (customEmail) {
+                totalUsers += 1;
             }
+            document.getElementById('metric-all-users').innerText = totalUsers;
 
-            try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                // Set the display profile name across network channels
-                await updateProfile(userCredential.user, { displayName: name });
-                
-                // Track cross-device profiles safely on the Firestore Cloud Node
-                await setDoc(doc(firestore, "users", userCredential.user.uid), {
-                    uid: userCredential.user.uid,
-                    name: name,
-                    email: email.toLowerCase(),
-                    role: "Standard User"
-                });
+            const currentSession = localStorage.getItem('active_session_email');
+            document.getElementById('metric-active-users').innerText = currentSession ? "1" : "0";
+        }
 
-                successDiv.style.display = 'block';
-                setTimeout(() => { switchAuthBox('login'); }, 1200);
-            } catch (error) {
-                errorDiv.innerText = error.message;
-                errorDiv.style.display = 'block';
+        function fetchAndRenderActiveAvatar(email) {
+            if (!db) return;
+            const transaction = db.transaction(["avatars"], "readonly");
+            const store = transaction.objectStore("avatars");
+            const request = store.get(email.toLowerCase().trim());
+
+            request.onsuccess = function(e) {
+                const record = e.target.result;
+                if (record && record.currentAvatar) {
+                    profileImg.src = record.currentAvatar;
+                } else {
+                    profileImg.src = DEFAULT_AVATAR;
+                }
+            };
+        }
+
+        function loadAvatarFile(event) {
+            if(!currentUserEmail || !db) return;
+            const reader = new FileReader();
+            const normalizedEmail = currentUserEmail.toLowerCase().trim();
+            
+            reader.onload = function() {
+                const dataUrl = reader.result;
+                const transaction = db.transaction(["avatars"], "readwrite");
+                const store = transaction.objectStore("avatars");
+                const getRequest = store.get(normalizedEmail);
+
+                getRequest.onsuccess = function(e) {
+                    let record = e.target.result || { email: normalizedEmail, history: [] };
+                    record.currentAvatar = dataUrl;
+                    
+                    if (!record.history.includes(dataUrl)) {
+                        record.history.push(dataUrl);
+                    }
+
+                    store.put(record).onsuccess = function() {
+                        profileImg.src = dataUrl;
+                    };
+                };
             }
-        });
+            if(event.target.files[0]) { reader.readAsDataURL(event.target.files[0]); }
+        }
 
-        // --- LOG IN FORM PIPELINE ---
-        document.getElementById('login-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const emailInput = document.getElementById('login-email').value.toLowerCase().trim();
-            const passwordInput = document.getElementById('login-password').value;
-            const errorDiv = document.getElementById('login-error');
+        function deleteAvatarFile() {
+            if(!currentUserEmail || !db) return;
+            const normalizedEmail = currentUserEmail.toLowerCase().trim();
+            
+            if(confirm("Are you sure you want to remove your active profile picture?")) {
+                const transaction = db.transaction(["avatars"], "readwrite");
+                const store = transaction.objectStore("avatars");
+                const getRequest = store.get(normalizedEmail);
 
-            errorDiv.style.display = 'none';
-
-            try {
-                await signInWithEmailAndPassword(auth, emailInput, passwordInput);
-            } catch (error) {
-                errorDiv.innerText = "Invalid matching credentials. Access Denied.";
-                errorDiv.style.display = 'block';
+                getRequest.onsuccess = function(e) {
+                    let record = e.target.result;
+                    if (record) {
+                        record.currentAvatar = null; 
+                        store.put(record).onsuccess = function() {
+                            profileImg.src = DEFAULT_AVATAR;
+                            alert("Picture removed from profile display.");
+                        };
+                    }
+                };
             }
-        });
+        }
 
-        // --- LOG OUT CHANNEL ---
-        window.logout = async function() {
-            await signOut(auth);
-            document.getElementById('login-form').reset();
-        };
-
-        // --- MANAGE PROFILE CHANGES REMOTELY ---
-        document.getElementById('update-settings-form').addEventListener('submit', async function(e) {
+        document.getElementById('update-settings-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            if (!auth.currentUser) return;
+            if (!currentUserEmail) return;
 
             const newName = document.getElementById('settings-name').value.trim();
-            if (newName === "") return;
+            const newEmail = document.getElementById('settings-email').value.toLowerCase().trim();
+            const newPassword = document.getElementById('settings-password').value;
+            const normalizedCurrentEmail = currentUserEmail.toLowerCase().trim();
 
-            if (auth.currentUser.email === MASTER_ADMIN_EMAIL) {
+            if (normalizedCurrentEmail === MASTER_ADMIN_EMAIL) {
                 alert("Master system admin configuration vectors cannot be realigned from this view layer.");
                 return;
             }
 
-            try {
-                await updateProfile(auth.currentUser, { displayName: newName });
-                await updateDoc(doc(firestore, "users", auth.currentUser.uid), { name: newName });
+            let updatedName = localStorage.getItem('stored_name') || "Standard User";
+            let updatedEmail = normalizedCurrentEmail;
+            let updatedPassword = localStorage.getItem('stored_password');
 
-                displayName.innerText = newName;
-                sidebarUserName.innerText = newName;
-                document.getElementById('update-settings-form').reset();
-                
-                const textAlert = document.getElementById('settings-success-msg');
-                textAlert.style.display = "block";
-                setTimeout(() => { textAlert.style.display = "none"; }, 3000);
-            } catch (err) {
-                alert("Profile adjustment sync encountered error: " + err.message);
+            if (newName !== "") updatedName = newName;
+            if (newPassword !== "") updatedPassword = newPassword;
+
+            if (newEmail !== "" && newEmail !== normalizedCurrentEmail) {
+                if (newEmail === MASTER_ADMIN_EMAIL) {
+                    alert("Illegal action. This node email address matches the system administrator.");
+                    return;
+                }
+                updatedEmail = newEmail;
             }
+
+            localStorage.setItem('stored_name', updatedName);
+            localStorage.setItem('stored_email', updatedEmail);
+            localStorage.setItem('stored_password', updatedPassword);
+            localStorage.setItem('active_session_email', updatedEmail);
+
+            if (updatedEmail !== normalizedCurrentEmail && db) {
+                const transaction = db.transaction(["avatars"], "readwrite");
+                const store = transaction.objectStore("avatars");
+                
+                store.get(normalizedCurrentEmail).onsuccess = function(event) {
+                    const oldRecord = event.target.result;
+                    if (oldRecord) {
+                        store.delete(normalizedCurrentEmail);
+                        oldRecord.email = updatedEmail;
+                        store.put(oldRecord);
+                    }
+                };
+            }
+
+            currentUserEmail = updatedEmail;
+
+            displayName.innerText = updatedName;
+            sidebarUserName.innerText = updatedName;
+            displayEmail.innerText = updatedEmail;
+
+            document.getElementById('update-settings-form').reset();
+            refreshLiveMetrics();
+            const textAlert = document.getElementById('settings-success-msg');
+            textAlert.style.display = "block";
+            setTimeout(() => { textAlert.style.display = "none"; }, 3000);
         });
 
-        // --- KEEPING FUNCTIONAL SYSTEM UI INTERACTION METHODS GLOBALIZED ---
-        window.switchSection = function(sectionId, clickedTab) {
-            const sections = document.querySelectorAll('.web-section');
-            sections.forEach(sec => sec.classList.remove('active-section'));
-            document.getElementById(sectionId).classList.add('active-section');
-
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => item.classList.remove('active'));
-            clickedTab.classList.add('active');
-        };
-
-        window.switchAuthBox = function(target) {
-            document.getElementById('signup-msg').style.display = 'none';
-            document.getElementById('login-error').style.display = 'none';
-            document.getElementById('signup-error').style.display = 'none';
-            if (target === 'login') {
-                signupBox.classList.add('hidden');
-                loginBox.classList.remove('hidden');
-            } else {
-                loginBox.classList.add('hidden');
-                signupBox.classList.remove('hidden');
-            }
-        };
-
-        window.selectUploadTag = function(category, value, buttonElement) {
+        function selectUploadTag(category, value, buttonElement) {
             uploadSelectedTags[category] = value;
             const siblings = buttonElement.parentNode.querySelectorAll('.upload-tag-btn');
             siblings.forEach(btn => btn.classList.remove('selected'));
             buttonElement.classList.add('selected');
-        };
+        }
 
-        window.filterCategory = function(section, tag, buttonElement) {
-            activeFilters[section] = tag;
-            const siblings = buttonElement.parentNode.querySelectorAll('.category-btn');
-            siblings.forEach(btn => btn.classList.remove('active-cat'));
-            buttonElement.classList.add('active-cat');
-            renderUploads();
-        };
-
-        window.closeLightbox = function() {
-            lightbox.classList.add('hidden');
-            lightboxContent.innerHTML = ""; 
-            if (currentActiveObjectUrl) {
-                URL.revokeObjectURL(currentActiveObjectUrl);
-                currentActiveObjectUrl = null;
-            }
-        };
-
-        window.handleFileUpload = function(category) {
+        function handleFileUpload(category) {
             const fileInput = document.getElementById(`upload-${category}-file`);
             const chosenTag = uploadSelectedTags[category];
             const file = fileInput.files[0];
@@ -1148,9 +1091,9 @@
                 renderUploads();
                 alert(`Uploaded successfully under [${fileRecord.tag}] category!`);
             };
-        };
+        }
 
-        window.deleteFile = function(category, fileId) {
+        function deleteFile(category, fileId) {
             if(confirm("Are you sure you want to delete this file permanently?")) {
                 const transaction = db.transaction(["files"], "readwrite");
                 const store = transaction.objectStore("files");
@@ -1158,9 +1101,17 @@
                     renderUploads();
                 };
             }
-        };
+        }
 
-        window.openFileInLightbox = function(file) {
+        function filterCategory(section, tag, buttonElement) {
+            activeFilters[section] = tag;
+            const siblings = buttonElement.parentNode.querySelectorAll('.category-btn');
+            siblings.forEach(btn => btn.classList.remove('active-cat'));
+            buttonElement.classList.add('active-cat');
+            renderUploads();
+        }
+
+        function openFileInLightbox(file) {
             lightboxTitle.innerText = file.name;
             lightboxContent.innerHTML = ""; 
 
@@ -1202,70 +1153,16 @@
                 `;
             }
             lightbox.classList.remove('hidden');
-        };
-
-        function fetchAndRenderActiveAvatar(email) {
-            if (!db) return;
-            const transaction = db.transaction(["avatars"], "readonly");
-            const store = transaction.objectStore("avatars");
-            const request = store.get(email);
-
-            request.onsuccess = function(e) {
-                const record = e.target.result;
-                if (record && record.currentAvatar) {
-                    profileImg.src = record.currentAvatar;
-                } else {
-                    profileImg.src = DEFAULT_AVATAR;
-                }
-            };
         }
 
-        window.loadAvatarFile = function(event) {
-            if(!auth.currentUser || !db) return;
-            const email = auth.currentUser.email;
-            const reader = new FileReader();
-            
-            reader.onload = function() {
-                const dataUrl = reader.result;
-                const transaction = db.transaction(["avatars"], "readwrite");
-                const store = transaction.objectStore("avatars");
-                const getRequest = store.get(email);
-
-                getRequest.onsuccess = function(e) {
-                    let record = e.target.result || { email: email, history: [] };
-                    record.currentAvatar = dataUrl;
-                    
-                    if (!record.history.includes(dataUrl)) record.history.push(dataUrl);
-
-                    store.put(record).onsuccess = function() {
-                        profileImg.src = dataUrl;
-                    };
-                };
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            lightboxContent.innerHTML = ""; 
+            if (currentActiveObjectUrl) {
+                URL.revokeObjectURL(currentActiveObjectUrl);
+                currentActiveObjectUrl = null;
             }
-            if(event.target.files[0]) { reader.readAsDataURL(event.target.files[0]); }
-        };
-
-        window.deleteAvatarFile = function() {
-            if(!auth.currentUser || !db) return;
-            const email = auth.currentUser.email;
-            
-            if(confirm("Are you sure you want to remove your active profile picture?")) {
-                const transaction = db.transaction(["avatars"], "readwrite");
-                const store = transaction.objectStore("avatars");
-                const getRequest = store.get(email);
-
-                getRequest.onsuccess = function(e) {
-                    let record = e.target.result;
-                    if (record) {
-                        record.currentAvatar = null; 
-                        store.put(record).onsuccess = function() {
-                            profileImg.src = DEFAULT_AVATAR;
-                            alert("Picture removed from profile display.");
-                        };
-                    }
-                };
-            }
-        };
+        }
 
         function renderUploads() {
             if (!db) return;
@@ -1334,6 +1231,135 @@
                     });
                 }
             };
+        }
+
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value.trim();
+            const email = document.getElementById('signup-email').value.toLowerCase().trim();
+            const password = document.getElementById('signup-password').value;
+
+            if (email === MASTER_ADMIN_EMAIL) {
+                alert("This master admin email is already registered internally.");
+                return;
+            }
+
+            localStorage.setItem('stored_name', name);
+            localStorage.setItem('stored_email', email);
+            localStorage.setItem('stored_password', password);
+            localStorage.setItem('stored_role', "Standard User");
+
+            refreshLiveMetrics();
+            document.getElementById('signup-msg').style.display = 'block';
+            setTimeout(() => { switchAuthBox('login'); }, 1200);
+        });
+
+        function executeLoginRoutine(emailInput, passwordInput) {
+            let loggedInUser = null;
+            let loggedInRole = null;
+            let loggedInName = "User Account";
+            
+            // Standardize login input variation early
+            const normalizedInputEmail = emailInput.toLowerCase().trim();
+
+            if (normalizedInputEmail === MASTER_ADMIN_EMAIL && passwordInput === MASTER_ADMIN_PASSWORD) {
+                loggedInUser = MASTER_ADMIN_EMAIL;
+                loggedInRole = "Administrator";
+                loggedInName = "System Director";
+            } else {
+                const cachedEmail = localStorage.getItem('stored_email');
+                const cachedPassword = localStorage.getItem('stored_password');
+                const cachedRole = localStorage.getItem('stored_role');
+                const cachedName = localStorage.getItem('stored_name');
+
+                if (cachedEmail && normalizedInputEmail === cachedEmail.toLowerCase().trim() && passwordInput === cachedPassword) {
+                    loggedInUser = cachedEmail.toLowerCase().trim();
+                    loggedInRole = cachedRole;
+                    loggedInName = cachedName || "User Account";
+                }
+            }
+
+            if (loggedInUser && loggedInRole) {
+                document.getElementById('login-error').style.display = 'none';
+                currentUserRole = loggedInRole; 
+                currentUserEmail = loggedInUser;
+                
+                localStorage.setItem('active_session_email', currentUserEmail);
+                
+                authScreen.classList.add('hidden');
+                mainApp.classList.remove('hidden');
+                
+                displayName.innerText = loggedInName;
+                sidebarUserName.innerText = loggedInName;
+                displayEmail.innerText = loggedInUser;
+                displayRole.innerText = loggedInRole;
+                sidebarRoleBadge.innerText = loggedInRole;
+
+                fetchAndRenderActiveAvatar(currentUserEmail);
+
+                const adminUploadBars = document.querySelectorAll('.admin-only');
+
+                if (loggedInRole === 'Administrator') {
+                    adminNavItem.classList.remove('hidden');
+                    sidebarRoleBadge.className = "role-badge admin-role";
+                    adminUploadBars.forEach(bar => bar.classList.remove('hidden'));
+                } else {
+                    adminNavItem.classList.add('hidden');
+                    sidebarRoleBadge.className = "role-badge user-role";
+                    adminUploadBars.forEach(bar => bar.classList.add('hidden'));
+                }
+                
+                renderUploads(); 
+                refreshLiveMetrics();
+                switchSection('home-sec', document.querySelector('.nav-item'));
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('login-email').value;
+            const passwordInput = document.getElementById('login-password').value;
+
+            const success = executeLoginRoutine(emailInput, passwordInput);
+            if (!success) {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        });
+
+        function switchSection(sectionId, clickedTab) {
+            const sections = document.querySelectorAll('.web-section');
+            sections.forEach(sec => sec.classList.remove('active-section'));
+            document.getElementById(sectionId).classList.add('active-section');
+
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            clickedTab.classList.add('active');
+        }
+
+        function logout() {
+            currentUserRole = "Standard User"; 
+            currentUserEmail = "";
+            localStorage.removeItem('active_session_email');
+            
+            refreshLiveMetrics();
+            mainApp.classList.add('hidden');
+            authScreen.classList.remove('hidden');
+            document.getElementById('login-form').reset();
+        }
+
+        function switchAuthBox(target) {
+            document.getElementById('signup-msg').style.display = 'none';
+            document.getElementById('login-error').style.display = 'none';
+            if (target === 'login') {
+                signupBox.classList.add('hidden');
+                loginBox.classList.remove('hidden');
+            } else {
+                loginBox.classList.add('hidden');
+                signupBox.classList.remove('hidden');
+            }
         }
     </script>
 </body>
