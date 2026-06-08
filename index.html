@@ -1081,7 +1081,8 @@
                 name: file.name,
                 size: (file.size / 1024).toFixed(1) + " KB",
                 type: file.type || (category === 'videos' ? 'video/mp4' : 'application/octet-stream'),
-                data: file 
+                data: file,
+                owner: currentUserEmail.toLowerCase().trim() // Track file owner assignment dynamically
             };
 
             const transaction = db.transaction(["files"], "readwrite");
@@ -1187,7 +1188,11 @@
                     const file = cursor.value;
                     const cat = file.category;
 
-                    if (categories.includes(cat)) {
+                    // Evaluate data segmentation parameters: Users see personal nodes, Admins bypass filtration logic
+                    const isOwner = file.owner === currentUserEmail.toLowerCase().trim();
+                    const isAdmin = currentUserRole === "Administrator";
+
+                    if (categories.includes(cat) && (isOwner || isAdmin)) {
                         const currentFilter = activeFilters[cat];
                         if (currentFilter === 'All' || file.tag === currentFilter) {
                             recordsFound[cat]++;
